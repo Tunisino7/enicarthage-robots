@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+<% if session[:name] == "tunisino" && session[:password] == "123" %>
+<div class="container">
+  <div class = "page-header" style="text-align: center; margin: 40px 0;">
+    <h1>
+      Teams
+    </h1>
+  </div>
+
+  <div class="form-inline">
+    <p class="mr-sm-2" for="inlineFormCustomSelect">Choose Contest please: </label>
+      <span><%= button_to 'Colisée de carthage', {:controller => "admin", :action => "dashboard", :contests => 1} , :method=>:post  %></span>
+      <span><%= button_to 'La conquete de la méditerranée', {:controller => "admin", :action => "dashboard", :contests => 2} , :method=>:post  %></span>
+      <span><%= button_to 'Collecte des ressources', {:controller => "admin", :action => "dashboard", :contests => 3} , :method=>:post  %></span>
+  </div>
+
+  <table class="table display responsive no-wrap" id="myTable">
+    <thead class="thead-inverse">
+      <tr>
+        <th>Leader</th>
+        <th>Email</th>
+        <th>Cin</th>
+        <th>Phone</th>
+        <th>Date</th>
+        <th>Contest</th>
+        <th>Robot</th>
+        <th>Other Members</th>
+        <th>University</th>
+        <th>Paymet proof</th>
+        <th>Active</th>
+        <th>Status</th>
+        <th colspan="4"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @teams.each do |team| %>
+      <tr>
+        <td><%= team.leader %></td>
+        <td><%= team.email %></td>
+        <td><%= team.cin %></td>
+        <td><%= team.phone %></td>
+        <td><%= team.date %></td>
+        <td><%= team.contest %></td>
+        <td><%= team.robot %></td>
+        <td><%= team.member1 %> ,<%= team.member2 %> ,<%= team.member3 %> ,<%= team.member4 %> ,<%= team.member5 %> ,<%= team.member6 %> ,<%= team.member7 %> </td>
+        <td><%= team.university %></td>
+        <td><a href="<%= team.payment_proof.url(:large) %>" target="_blank"><%= image_tag team.payment_proof.url(:thumb) %></a></td>
+        <td><%= team.active %></td>
+        <td><%= team.status %></td>
+
+        <td>
+          <td><%= button_to 'Activate', {:controller => "admin", :action => "update", :activatedteam => team.id} , :method=>:post  %></td>
+        </td>
+        <td><%= link_to 'Show', team %></td>
+        <td><%= link_to 'Edit', edit_team_path(team) %></td>
+        <td><%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Team', new_team_path %>
+
+  <% end %>
+
+</div>

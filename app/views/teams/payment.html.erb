@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <%= form_tag "/teams/#{@team.id}", method: "payment" do %>
+        <% if team.errors.any? %>
+          <div id="error_explanation" style="margin-bottom:50px;">
+            <h2><%= pluralize(team.errors.count, "erreur") %> prohibited this team from being saved:</h2>
+
+            <ul class="list-group">
+            <% team.errors.messages.each do |message| %>
+                <% message.last.each do |child_msg| %>
+                  <li class="list-group-item list-group-item-action list-group-item-danger"><%= child_msg  %></li>
+                <% end %>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <div class="form-group row">
+          <%= form.label "Paiement:", class: "col-4 col-form-label" %>
+          <div class="col-8"><%= form.file_field :payment_proof %></div>
+        </div>
+        <div class="actions">
+          <%= form.submit "submit", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-4">
+    </div>
+  </div>
+</div>

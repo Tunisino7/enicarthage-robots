@@ -1,0 +1,20 @@
+<div class="container gallery-container">
+  <div class = "page-header" style="text-align: center; margin: 40px 0;">
+    <h1>
+      Mon équipe
+    </h1>
+  </div>
+</div>
+<div class="container my-team">
+  <div class="row">
+    <div class="col-4">
+      <a href="/teams/<%= @myteam.id %>" type="button" class="btn btn-primary btn-lg">Voir</a>
+    </div>
+    <div class="col-4">
+      <a href="/teams/<%= @myteam.id %>/edit?p=1" type="button" class="btn btn-primary btn-lg">Modifier</a>
+    </div>
+    <div class="col-4">
+      <a href="/teams/<%= @myteam.id %>/edit?p=2" type="button" class="btn btn-primary btn-lg">Vérifier le paiement</a>
+    </div>
+  </div>
+</div>

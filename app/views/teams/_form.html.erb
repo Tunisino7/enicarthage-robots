@@ -1,0 +1,124 @@
+<div class="container" style="margin-bottom: 50px;">
+  <div class="row">
+    <div class="col-8">
+      <%= form_with(model: team, local: true) do |form| %>
+      <% if team.errors.any? %>
+      <div id="error_explanation" style="margin-bottom:50px;">
+        <h2><%= pluralize(team.errors.count, "erreur") %> prohibited this team from being saved:</h2>
+
+        <ul class="list-group">
+          <% team.errors.messages.each do |message| %>
+          <% message.last.each do |child_msg| %>
+          <li class="list-group-item list-group-item-action list-group-item-danger"><%= child_msg  %></li>
+          <% end %>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+
+      <% if team_page.to_i != 2 %>
+
+      <div class="form-group row">
+        <%= form.label "Chef d'équipe: *", class: "col-4 col-form-label" %>
+        <div class="col-8">
+          <%= form.text_field :leader, id: :team_leader, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <%= form.label "Adresse Email: *", class: "col-4 col-form-label" %>
+        <div class="col-8">
+          <%= form.text_field :email, id: :team_email, class: "form-control" %></div>
+        </div>
+        <% end %>
+        <% if team_page.to_i == 2 %>
+        <div class="form-group row">
+          <%= form.label "Paiement:", class: "col-4 col-form-label" %>
+          <div class="col-8"><%= form.file_field :payment_proof %></div>
+        </div>
+        <% end %>
+        <div class="form-group row">
+          <%= form.label "Mot de passe: *", class: "col-4 col-form-label" %>
+          <div class="col-8"><%= form.password_field :password, id: :team_password, class: "form-control" %></div>
+        </div>
+
+        <div class="form-group row">
+          <%= form.label "Réentrer le mot de passe: *", class: "col-4 col-form-label" %>
+          <div class="col-8"><%= form.password_field :password_confirmation, id: :team_password_confirmation, class: "form-control" %></div>
+        </div>
+
+        <% if team_page.to_i != 2 %>
+
+        <div class="form-group row">
+          <%= form.label "Numéro de téléphone: *", class: "col-4 col-form-label" %>
+          <div class="col-8"><%= form.number_field :phone, id: :team_phone, class: "form-control" %></div>
+        </div>
+
+        <div class="form-group row">
+          <%= form.label "Numéro CIN: *", class: "col-4 col-form-label" %>
+          <div class="col-8"><%= form.number_field :cin, id: :team_cin, class: "form-control" %></div>
+        </div>
+
+        <div class="form-group row">
+          <%= form.label "Compétition: *", class: "col-4 col-form-label" %>
+          <div class="col-8">
+            <%= form.select(:contest, [['Colisée de carthage', 1], ['La conquete de la méditerranée', 2], ['Collecte des ressources', 3]], {include_blank: true, selected: current_contest }, { :class => 'form-control contest-select', :prompt => "Please select" }) %>
+          </div>
+
+        </div>
+
+        <div class="form-group row">
+          <%= form.label "Nom du Robot: *", class: "col-4 col-form-label" %>
+          <div class="col-8"><%= form.text_field :robot, id: :team_robot, class: "form-control" %></div>
+        </div>
+
+        <div class="form-group row">
+          <%= form.label "Etablissement: *", class: "col-4 col-form-label" %>
+          <div class="col-8"><%= form.text_field :university, id: :team_university, class: "form-control" %></div>
+        </div>
+
+        <div class="form-group row">
+          <%= form.label "Membre 2:", class: "col-4 col-form-label" %>
+          <div class="col-8"><%= form.text_field :member1, id: :team_member1, class: "form-control" %></div>
+        </div>
+
+        <div class="form-group row">
+          <%= form.label "Membre 3:", class: "col-4 col-form-label" %>
+          <div class="col-8"><%= form.text_field :member2, id: :team_member2, class: "form-control" %></div>
+        </div>
+
+        <div class="form-group row">
+          <%= form.label "Membre 4:", class: "col-4 col-form-label" %>
+          <div class="col-8"><%= form.text_field :member3, id: :team_member3, class: "form-control" %></div>
+        </div>
+
+        <div class="form-group row hide-member">
+          <%= form.label "Membre 5:", class: "col-4 col-form-label" %>
+          <div class="col-8"><%= form.text_field :member4, id: :team_member4, class: "form-control" %></div>
+        </div>
+
+        <div class="form-group row hide-member">
+          <%= form.label "Membre 6:", class: "col-4 col-form-label" %>
+          <div class="col-8"><%= form.text_field :member5, id: :team_member5, class: "form-control" %></div>
+        </div>
+
+        <div class="form-group row hide-member">
+          <%= form.label "Membre 7:", class: "col-4 col-form-label" %>
+          <div class="col-8"><%= form.text_field :member6, id: :team_member6, class: "form-control" %></div>
+        </div>
+
+        <div class="form-group row hide-member">
+          <%= form.label "Membre 8:", class: "col-4 col-form-label" %>
+          <div class="col-8"><%= form.text_field :member7, id: :team_member7, class: "form-control" %></div>
+        </div>
+
+        <% end %>
+        <div class="actions">
+          <%= form.submit "submit", class: "btn btn-primary" %>
+        </div>
+        <% end %>
+      </div>
+      <div class="col-4">
+      </div>
+    </div>
+  </div>

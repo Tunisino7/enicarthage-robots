@@ -1,0 +1,41 @@
+<%
+current_time = DateTime.now
+deadline = DateTime.new(2017,11,25,21,00,00,Rational(1,24))
+%>
+
+<% if current_time < deadline %>
+
+<div class="container gallery-container">
+  <div class = "page-header" style="text-align: center; margin: 40px 0;">
+    <% if team_page.to_i != 2 %>
+    <h1>
+      Modifier mon équipe
+    </h1>
+    <% end %>
+    <% if team_page.to_i == 2 %>
+    <h1>
+      Vérifier le Paiement
+    </h1>
+    <% end %>
+  </div>
+</div>
+
+<% if team_page.to_i != 2 %>
+<div class="container gallery-container">
+  <div class="alert alert-info" role="alert" style="text-align: center;">
+    Vous pouvez changer vos données jusqu'au <strong>24 november - 20:00</strong>!
+  </div>
+</div>
+<% end %>
+
+<%= render 'form', team: @team %>
+
+<%= link_to 'Show', @team %>
+
+<% else %>
+<div class="container gallery-container">
+  <div class="alert alert-danger" role="alert" style="text-align: center;">
+    Vous ne pouvez pas changer l'équipe!
+  </div>
+</div>
+<% end %>

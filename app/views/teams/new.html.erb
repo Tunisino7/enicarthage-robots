@@ -1,0 +1,16 @@
+<div class="container gallery-container">
+  <div class = "page-header" style="text-align: center; margin: 40px 0;">
+    <h1>
+      Inscription aux compétitions
+    </h1>
+  </div>
+</div>
+<% if @max[0] < 2 ||  @max[1] < 2 || @max[2] < 0 %>
+<%= render 'form', team: @team %>
+<% else %>
+<div class="container gallery-container">
+  <div class="alert alert-danger" role="alert" style="text-align: center;">
+    Nous avons atteint le nombre maximum d'équipes autorisées!
+  </div>
+</div>
+<% end %>
